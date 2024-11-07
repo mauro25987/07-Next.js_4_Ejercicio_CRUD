@@ -1,4 +1,5 @@
 import { Item } from "@/lib/types"
+import Link from "next/link"
 import Button from "./Button"
 
 // TODO: Implementar type de este componente
@@ -31,7 +32,10 @@ export default function ItemList({ items }: { items: Item[] }) {
               <td className="py-3 px-4">{item.name}</td>
               <td className="py-3 px-4">{item.description}</td>
               <td className="py-3 px-4 flex justify-center space-x-2">
-                <Button variant="secondary">Editar</Button>
+                <Button variant="secondary">
+                  <Link href={`/?itemId=${item.id}`}>Editar</Link>
+                </Button>
+
                 <Button variant="danger">Eliminar</Button>
               </td>
             </tr>

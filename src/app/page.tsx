@@ -2,10 +2,13 @@ import Button from "@/components/Button"
 import ItemForm from "@/components/ItemForm"
 import ItemList from "@/components/ItemList"
 import { createItemAction, resetItemsAction } from "@/lib/actions"
-import { getItems } from "@/lib/db"
+import { getItemById, getItems } from "@/lib/db"
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ itemId: string }> }) {
   const items = await getItems()
+  const { itemId } = await searchParams
+  const item = await getItemById(Number(itemId))
+  console.log(item)
 
   return (
     <main className="max-w-7xl mx-auto px-6 md:px-12">
@@ -16,7 +19,7 @@ export default async function Home() {
 
       <div className="grid grid-cols-3 gap-8">
         <div className="col-span-1">
-          <ItemForm onSubmit={createItemAction} />
+          <ItemForm onSubmit={createItemAction} initialData={item} />
         </div>
 
         <div className="col-span-2">

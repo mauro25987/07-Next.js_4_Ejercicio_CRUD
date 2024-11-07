@@ -17,12 +17,12 @@ export default function ItemForm({
 
       <div>
         <Label htmlFor="name">Nombre</Label>
-        <Input id="name" name="name" required />
+        <Input id="name" name="name" defaultValue={initialData?.name} required />
       </div>
 
       <div>
         <Label htmlFor="description">Descripción</Label>
-        <Input id="description" name="description" required />
+        <Input id="description" name="description" defaultValue={initialData?.description} required />
       </div>
 
       <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600">
